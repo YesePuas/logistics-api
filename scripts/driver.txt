@@ -1,0 +1,16 @@
+-- public.driver definition
+
+-- Drop table
+
+-- DROP TABLE public.driver;
+
+CREATE TABLE public.driver (
+	document_type varchar NOT NULL,
+	full_name varchar NOT NULL,
+	active bool NOT NULL DEFAULT true,
+	update_ad timestamp NOT NULL DEFAULT now(),
+	created_at timestamp NOT NULL DEFAULT now(),
+	document_number varchar NOT NULL,
+	id bigserial NOT NULL,
+	CONSTRAINT driver_pk PRIMARY KEY (id)
+);

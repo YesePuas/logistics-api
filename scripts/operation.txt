@@ -1,0 +1,21 @@
+-- public.operation definition
+
+-- Drop table
+
+-- DROP TABLE public.operation;
+
+CREATE TABLE public.operation (
+	id_driver int4 NOT NULL,
+	created_at timestamp NOT NULL DEFAULT now(),
+	update_ad timestamp NOT NULL DEFAULT now(),
+	id_vehicle int4 NOT NULL,
+	id_supplier int4 NOT NULL,
+	id bigserial NOT NULL
+);
+
+
+-- public.operation foreign keys
+
+ALTER TABLE public.operation ADD CONSTRAINT driver_fk FOREIGN KEY (id_driver) REFERENCES public.driver(id);
+ALTER TABLE public.operation ADD CONSTRAINT operation_fk FOREIGN KEY (id_supplier) REFERENCES public.supplier(id);
+ALTER TABLE public.operation ADD CONSTRAINT operation_fk_1 FOREIGN KEY (id_vehicle) REFERENCES public.vehicle(id);

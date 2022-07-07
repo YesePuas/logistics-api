@@ -1,0 +1,22 @@
+-- public.vehicle definition
+
+-- Drop table
+
+-- DROP TABLE public.vehicle;
+
+CREATE TABLE public.vehicle (
+	license_plate varchar NOT NULL,
+	active bool NOT NULL DEFAULT true,
+	model varchar NOT NULL,
+	sub_brand varchar NOT NULL,
+	update_ad timestamp NOT NULL DEFAULT now(),
+	created_at timestamp NOT NULL DEFAULT now(),
+	id bigserial NOT NULL,
+	id_brand bigserial NOT NULL,
+	CONSTRAINT vehicle_pk PRIMARY KEY (id)
+);
+
+
+-- public.vehicle foreign keys
+
+ALTER TABLE public.vehicle ADD CONSTRAINT vehicle_fk FOREIGN KEY (id_brand) REFERENCES public.brand(id);

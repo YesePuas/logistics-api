@@ -1,0 +1,13 @@
+-- public.brand definition
+
+-- Drop table
+
+-- DROP TABLE public.brand;
+
+CREATE TABLE public.brand (
+	denomination varchar NOT NULL,
+	update_ad timestamp NOT NULL DEFAULT now(),
+	created_at timestamp NOT NULL DEFAULT now(),
+	id bigserial NOT NULL,
+	CONSTRAINT brand_pk PRIMARY KEY (id)
+);

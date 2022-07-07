@@ -1,0 +1,18 @@
+-- public.supplier definition
+
+-- Drop table
+
+-- DROP TABLE public.supplier;
+
+CREATE TABLE public.supplier (
+	full_name varchar NOT NULL,
+	document_type varchar NOT NULL,
+	document_number varchar NOT NULL,
+	email varchar NOT NULL,
+	active bool NOT NULL DEFAULT true,
+	update_ad timestamp NOT NULL DEFAULT now(),
+	created_at timestamp NOT NULL DEFAULT now(),
+	id bigserial NOT NULL,
+	address varchar NULL,
+	CONSTRAINT supplier_pk PRIMARY KEY (id)
+);
