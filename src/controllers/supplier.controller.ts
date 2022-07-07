@@ -19,7 +19,9 @@ export const createSupplier = async (req: Request, res: Response) => {
 
 export const getAllSuppliers = async (req: Request, res: Response) => {
   try {
-    const allSuppliers = await AppDataSourse.query("SELECT * FROM supplier");
+    const allSuppliers = await AppDataSourse.query(
+      "select supplier.* , count(operation.id_vehicle)  FROM supplier LEFT JOIN operation on supplier.id = operation.id_supplier group by supplier.id;"
+    );
     res.json(allSuppliers);
   } catch (error) {
     console.error(error);

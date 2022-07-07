@@ -18,7 +18,9 @@ export const createVehicle = async (req: Request, res: Response) => {
 
 export const getAllVehicles = async (req: Request, res: Response) => {
   try {
-    const allVehicles = await AppDataSourse.query("SELECT * FROM vehicle");
+    const allVehicles = await AppDataSourse.query(
+      "select distinct  vehicle.*, d.document_number, d.full_name, b.denomination  FROM vehicle LEFT JOIN operation on vehicle.id = operation.id_vehicle LEFT join driver d on d.id = operation.id_driver LEFT JOIN brand b on vehicle.id_brand = b.id"
+    );
     res.json(allVehicles);
   } catch (error) {
     console.error(error);
